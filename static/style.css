@@ -1,0 +1,159 @@
+/* Remove a margem padrão que o navegador aplica no body */
+body {
+  margin: 0;
+  font-family:
+    system-ui, sans-serif; /* usa a fonte padrão do sistema operacional */
+  background: #eef2ff; /* fundo azul bem claro pra página inteira */
+  color: #202438;
+}
+
+/* Faixa roxa no topo da página, com o título centralizado */
+header {
+  text-align: center;
+  background: #4f46e5;
+  color: white;
+  padding: 15px; /* espaçamento interno em todos os lados */
+}
+
+/* Limita a largura do conteúdo e centraliza na tela */
+.container {
+  max-width: 900px; /* não deixa esticar demais em telas grandes */
+  margin: 30px auto; /* "auto" nas laterais centraliza horizontalmente */
+  padding: 0 16px; /* respiro nas bordas em telas pequenas (celular) */
+}
+
+/* Visual de "cartão": fundo branco, cantos arredondados e sombra leve */
+.formulario,
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* sombra suave,efeito de elevação */
+}
+
+label {
+  display: block; /* força o label a ficar numa linha própria, em cima do campo */
+  margin: 12px 0 5px; /* espaço acima e um pouco abaixo, antes do input */
+  font-weight: bold; /* fonte do label em negrito */
+}
+
+input,
+textarea {
+  width: 100%; /* ocupa toda a largura disponível */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; /* padding não soma na largura, senão passaria dos 100% */
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: 0; /* remove a borda padrão do navegador */
+  border-radius: 6px;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer; /* mostra a "mãozinha" ao passar o mouse, indicando que é clicável */
+}
+
+/* Cards lado a lado, se ajustam sozinhos ao tamanho da tela */
+.lista {
+  display: grid;
+  /* cria quantas colunas couberem, cada uma com no mínimo 250px,
+     dividindo o espaço restante igualmente entre elas (1fr) */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* espaço entre os cards, tanto na horizontal quanto na vertical */
+}
+
+/* Faixa roxa no topo do card, feita só com o fundo */
+.card {
+  text-align: center;
+  /* gradiente que muda de roxo pra branco exatamente aos 70px,
+     simulando uma faixa colorida sem precisar de uma div extra */
+  background: linear-gradient(#4f46e5 70px, white 70px);
+}
+
+/* Foto redonda (ou a inicial, quando não tem foto) */
+.foto {
+  display: inline-block; /* permite aplicar largura/altura fixas */
+  width: 100px;
+  height: 100px;
+  line-height: 100px; /* igual à altura, centraliza a inicial verticalmente */
+  border-radius: 50%; /* corta em círculo */
+  border: 4px solid white; /* contorno branco, destaca do fundo roxo */
+  object-fit: cover; /* se for uma imagem <img>, preenche o círculo sem distorcer */
+  background: #818cf8; /* cor de fundo usada quando não há foto (mostra só a inicial) */
+  color: white;
+  font-size: 40px; /* tamanho da letra/inicial exibida dentro do círculo */
+}
+
+.sobre {
+  color: gray;
+  font-style: italic;
+}
+
+/* ===== BLOCO NOVO: botões de Editar / Excluir nos cards ===== */
+
+/* Coloca os dois botões lado a lado, dividindo a largura do card */
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Cada item (o link e o form do excluir) ocupa metade do espaço */
+.acoes > * {
+  flex: 1;
+}
+
+/* Visual comum dos dois botões.
+   O link <a> precisa de display:block pra aceitar padding como um botão */
+.btn-editar,
+.btn-excluir {
+  display: block;
+  width: 100%;
+  margin: 0; /* anula o margin-top do "button" geral lá de cima */
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none; /* tira o sublinhado do link */
+  box-sizing: border-box;
+}
+
+.btn-editar {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.btn-excluir {
+  background: #fee2e2; /* vermelho clarinho: indica ação "perigosa" */
+  color: #b91c1c;
+}
+
+/* Leve escurecida ao passar o mouse */
+.btn-editar:hover,
+.btn-excluir:hover {
+  filter: brightness(0.95);
+}
+
+/* Link "Cancelar" da página de edição */
+.btn-cancelar {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  color: #4f46e5;
+}
+
+footer {
+  text-align: center;
+  background: #4f46e5;
+  color: white;
+  padding: 15px;
+}
+
+footer p {
+  margin: 0; /* tira a margem padrão do <p>, igual fizemos no header */
+}
