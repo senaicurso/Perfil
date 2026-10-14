@@ -1,0 +1,114 @@
+<!-- ===== NOVO ARQUIVO: página de edição ===== -->
+<!-- É o mesmo formulário do index, mas com os campos já preenchidos (value="...") -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Perfil</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>✏️ Editar Perfil</h1>
+      <p>Atualize os dados de {{ pessoa.nome }}</p>
+    </header>
+
+    <div class="container">
+      <div class="formulario">
+        <h2>📝 Editar perfil</h2>
+
+        <!-- sem "action": o form envia o POST pra mesma URL (/editar/<id>) -->
+        <form method="POST">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            value="{{ pessoa.nome }}"
+            required
+          />
+
+          <label for="idade">Idade</label>
+          <input
+            type="number"
+            id="idade"
+            name="idade"
+            value="{{ pessoa.idade }}"
+            required
+          />
+
+          <label for="cidade">Cidade</label>
+          <input
+            type="text"
+            id="cidade"
+            name="cidade"
+            value="{{ pessoa.cidade }}"
+            required
+          />
+
+          <label for="estado">Estado</label>
+          <input
+            type="text"
+            id="estado"
+            name="estado"
+            maxlength="2"
+            value="{{ pessoa.estado }}"
+            required
+          />
+
+          <!-- "or ''" evita aparecer "None" no campo quando o valor está vazio no banco -->
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="{{ pessoa.email or '' }}"
+          />
+
+          <label for="profissao">Profissão</label>
+          <input
+            type="text"
+            id="profissao"
+            name="profissao"
+            value="{{ pessoa.profissao or '' }}"
+          />
+
+          <label for="hobbies">Hobbies</label>
+          <input
+            type="text"
+            id="hobbies"
+            name="hobbies"
+            value="{{ pessoa.hobbies or '' }}"
+          />
+
+          <!-- textarea não tem "value": o conteúdo vai entre as tags -->
+          <label for="sobre">Sobre você</label>
+          <textarea id="sobre" name="sobre" rows="4">
+          {{ pessoa.sobre or '' }}</textarea
+          >
+
+          <label for="foto">Foto (nome do arquivo)</label>
+          <input
+            type="text"
+            id="foto"
+            name="foto"
+            value="{{ pessoa.foto or '' }}"
+            placeholder="maria.jpg"
+          />
+
+          <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <!-- link simples pra desistir e voltar -->
+        <a class="btn-cancelar" href="/">Cancelar</a>
+      </div>
+    </div>
+    <footer>
+      <p>🤍 Feito com dedicação nas aulas de Python + Flask no SENAI 🤍</p>
+    </footer>
+  </body>
+</html>
